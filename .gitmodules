@@ -7,3 +7,6 @@
 [submodule "wot-binding-rpi"]
 	path = wot-binding-rpi
 	url = git@github.com:boobalkrishnan/wot-binding-rpi.git
+[submodule "Library/cJSON"]
+	path = Library/cJSON
+	url = git@github.com:DaveGamble/cJSON.git
