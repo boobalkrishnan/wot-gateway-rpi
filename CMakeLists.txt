@@ -101,31 +101,31 @@ endif()
 # find_package(cJSON REQUIRED)
 
 # include_directories(${CJSON_INCLUDE_DIRS})
-# set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/Library/cJSON/install")
-# find_package(cjson QUIET)
+set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/Library/cJSON/install")
+find_package(cjson QUIET)
 
-# if (NOT cjson_FOUND)
-#     message(STATUS "cJSON not found, fetching from GitHub...")
+if (NOT cjson_FOUND)
+    message(STATUS "cJSON not found, fetching from GitHub...")
 
-#     set(CJSON_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Library/cJSON)
+    set(CJSON_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Library/cJSON)
 
-#     FetchContent_Declare(
-#         cJSON
-#         GIT_REPOSITORY https://github.com/DaveGamble/cJSON.git
-#         GIT_TAG        v1.7.18
-#         SOURCE_DIR     ${CJSON_SOURCE_DIR}
-#     )
-#     set(ENABLE_CUSTOM_COMPILER_FLAGS  OFF CACHE BOOL "" FORCE)
-#     set(ENABLE_CJSON_TEST OFF CACHE BOOL "" FORCE)
-#     set(ENABLE_CJSON_UTILS OFF CACHE BOOL "" FORCE)
-#     set(ENABLE_PUBLIC_SYMBOLS OFF CACHE BOOL "" FORCE)
-#     set(ENABLE_CJSON_UNINSTALL OFF CACHE BOOL "" FORCE)
-#     set(ENABLE_LOCALES OFF CACHE BOOL "" FORCE)
-#     FetchContent_MakeAvailable(cJSON)
-#     # find_package(PkgConfig)
-#     # pkg_check_modules(CJSON cjson)
-#     # include_directories(${CJSON_INCLUDE_DIRS})
-# endif()
+    FetchContent_Declare(
+        cJSON
+        GIT_REPOSITORY https://github.com/DaveGamble/cJSON.git
+        GIT_TAG        v1.7.18
+        SOURCE_DIR     ${CJSON_SOURCE_DIR}
+    )
+    set(ENABLE_CUSTOM_COMPILER_FLAGS  OFF CACHE BOOL "" FORCE)
+    set(ENABLE_CJSON_TEST OFF CACHE BOOL "" FORCE)
+    set(ENABLE_CJSON_UTILS OFF CACHE BOOL "" FORCE)
+    set(ENABLE_PUBLIC_SYMBOLS OFF CACHE BOOL "" FORCE)
+    set(ENABLE_CJSON_UNINSTALL OFF CACHE BOOL "" FORCE)
+    set(ENABLE_LOCALES OFF CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(cJSON)
+    # find_package(PkgConfig)
+    # pkg_check_modules(CJSON cjson)
+    # include_directories(${CJSON_INCLUDE_DIRS})
+endif()
 
 find_package(PkgConfig)
 pkg_check_modules(SERIAL libserial)
@@ -136,7 +136,7 @@ add_subdirectory(App)
 add_subdirectory(Devices)
 
 add_subdirectory(wot-binding-rpi)
-add_subdirectory(WoT-Cpp-Core)
+add_subdirectory(wotcpp)
 
 SET(SOURCE_FILES
     ./main.cpp
@@ -158,7 +158,6 @@ target_link_libraries(${PROJECT_NAME}
         wot-binding-rpi
         libcoap::coap-3
         ${SERIAL_LINK_LIBRARIES}
-        serial_port
         cjson
 	)
 

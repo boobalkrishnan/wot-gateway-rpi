@@ -17,9 +17,7 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
                 WoTApp
-                wot-tplink
                 wot-virtual-clock
-                wot-zigbee
                 WoTCore
                 cpp-logger
                 wot-binding-rpi
