@@ -1,0 +1,9 @@
+[submodule "Devices/wot-virtual-clock"]
+	path = Devices/wot-virtual-clock
+	url = git@github.com:boobalkrishnan/wot-virtual-clock.git
+[submodule "wotcpp"]
+	path = wotcpp
+	url = git@github.com:boobalkrishnan/wotcpp.git
+[submodule "wot-binding-rpi"]
+	path = wot-binding-rpi
+	url = git@github.com:boobalkrishnan/wot-binding-rpi.git
